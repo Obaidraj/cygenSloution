@@ -1,4 +1,4 @@
-import { Button, Card, Checkbox, Col, Form, Input, Row } from "antd";
+import { Button, Card, Checkbox, Col, Form, Input, Row, Space } from "antd";
 import Head from "next/head";
 import Image from "next/image";
 
@@ -14,6 +14,14 @@ export default function Login({ setlogin }) {
 
 	const onFinishFailed = (errorInfo) => {
 		console.log("Failed:", errorInfo);
+	};
+	const formItemLayout = {
+		labelCol: {
+			span: 4,
+		},
+		wrapperCol: {
+			span: 14,
+		},
 	};
 
 	return (
@@ -33,92 +41,94 @@ export default function Login({ setlogin }) {
 				align="middle"
 				style={{ minHeight: "100vh" }}
 			>
-				<Col span={10}>
-					<Card>
-						<Row
-							type="flex"
-							justify="center"
-							align="middle"
-						>
-							<Image
-								src={Logo}
-								alt="imageLogo"
-								width={100}
-								height={100}
-							/>
-						</Row>
-						<Form
-							name="basic"
-							labelCol={{
-								span: 8,
-							}}
-							wrapperCol={{
-								span: 16,
-							}}
-							initialValues={{
-								remember: true,
-							}}
-							onFinish={onFinish}
-							onFinishFailed={
-								onFinishFailed
-							}
-							autoComplete="off"
-						>
-							<Form.Item
-								label="Username"
-								name="username"
-								rules={[
-									{
-										required: true,
-										message: "Please input your username!",
-									},
-								]}
-							>
-								<Input />
-							</Form.Item>
+				<Col span={10} justify="center" align="middle">
+					<Row
+						type="flex"
+						justify="center"
+						align="middle"
+					>
+						<Image
+							src={Logo}
+							alt="imageLogo"
+							width={100}
+							height={100}
+						/>
+					</Row>
+					<Space
+						direction="horizontal"
+						style={{
+							width: "100%",
+							justifyContent:
+								"center",
+						}}
+					>
+						<h3>CYGEN SOLUTION</h3>
+					</Space>
 
-							<Form.Item
-								label="Password"
-								name="password"
-								rules={[
-									{
-										required: true,
-										message: "Please input your password!",
-									},
-								]}
-							>
-								<Input.Password />
-							</Form.Item>
+					<Form
+						{...formItemLayout}
+						layout={"vertical"}
+						name="basic"
+						// labelCol={{
+						// 	span: 8,
+						// }}
+						wrapperCol={{
+							span: 20,
+						}}
+						initialValues={{
+							remember: true,
+						}}
+						onFinish={onFinish}
+						onFinishFailed={onFinishFailed}
+						autoComplete="off"
+					>
+						<Form.Item
+							label="Username"
+							name="username"
+							rules={[
+								{
+									required: true,
+									message: "Please input your username!",
+								},
+							]}
+						>
+							<Input />
+						</Form.Item>
 
-							<Form.Item
-								name="remember"
-								valuePropName="checked"
-								wrapperCol={{
-									offset: 8,
-									span: 16,
+						<Form.Item
+							label="Password"
+							name="password"
+							rules={[
+								{
+									required: true,
+									message: "Please input your password!",
+								},
+							]}
+						>
+							<Input.Password />
+						</Form.Item>
+
+						<Form.Item
+							name="remember"
+							valuePropName="checked"
+						>
+							<Checkbox>
+								Remember me
+							</Checkbox>
+						</Form.Item>
+
+						<Form.Item>
+							<Button
+								type="primary"
+								htmlType="submit"
+								style={{
+									width: "100%",
 								}}
 							>
-								<Checkbox>
-									Remember
-									me
-								</Checkbox>
-							</Form.Item>
-
-							<Form.Item
-								wrapperCol={{
-									offset: 8,
-									span: 16,
-								}}
-							>
-								<Button
-									type="primary"
-									htmlType="submit"
-								>
-									Login
-								</Button>
-							</Form.Item>
-						</Form>
-					</Card>
+								Login
+							</Button>
+						</Form.Item>
+					</Form>
 				</Col>
 			</Row>
 		</div>

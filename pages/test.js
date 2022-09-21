@@ -1,5 +1,6 @@
 import Head from "next/head";
 import React from "react";
+import DataTable from "../components/test/dataTable";
 
 const Test = () => {
 	return (
@@ -13,7 +14,9 @@ const Test = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<main>Test</main>
+			<main>
+				<DataTable />
+			</main>
 		</div>
 	);
 };
